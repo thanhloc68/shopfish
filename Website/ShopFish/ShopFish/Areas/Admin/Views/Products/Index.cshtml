@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ShopFish.Models.Products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table class="table table-responsive table-bordered">
+    <tr>
+        <th>
+          <p>Mã sản phẩm</p>
+        </th>
+        <th>
+            <p>Tên sản phẩm</p>
+        </th>
+        <th>
+            <p>Hình</p>
+        </th>
+ 
+        <th>
+            <p>Số lượng</p>
+        </th>
+        <th>
+            <p>Giá</p>
+        </th>
+        <th>
+            <p>Hot</p>
+        </th>
+        <th>
+            <p>Ngày tạo</p>
+        </th>
+        <th>
+            <p>Ngày sửa</p>
+        </th>
+        <th>
+            <p>Số lượng người xem</p>
+        </th>
+        <th>
+            <p>Nhà cung cấp</p>
+        </th>
+        <th>
+            <p>Danh mục</p>
+        </th>
+        <th><p>
+    @Html.ActionLink("Create New", "Create")
+</p></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            <img src="~/Content/img/@Html.DisplayFor(modelItem => item.Image)" alt="@item.Name" style="width:150px;height:150px" />
+        </td>
+  
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Quanlity)
+        </td>
+        <td>
+            @string.Format("{0:0,0 VNĐ}", item.Price).Replace(",", ".")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Createdates)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datesupdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.viewcount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Suppliers.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categories.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+           
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>

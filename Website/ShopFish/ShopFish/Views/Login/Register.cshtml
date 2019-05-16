@@ -1,0 +1,180 @@
+﻿@model ShopFish.ViewModels.ResignViewModel
+@using BotDetect.Web.Mvc;
+<link href="BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
+@{ MvcCaptcha registerCaptcha = new MvcCaptcha("registerCaptcha");
+    registerCaptcha.UserInputID = "CaptchaCode";}
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid bg-light">
+        @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-offset-2"></div>
+                <aside class="col-md-8">
+                    <h4 class="text-center" style="text-transform: uppercase">Bạn chưa có tài khoản! Vui lòng đăng kí tại đây : </h4>
+
+                    <div class="card">
+                        <article class="card-body">
+
+                            <h4 class="card-title text-center mb-4 mt-1">Sign Up</h4><hr>
+
+                            <form>
+                                <div class="form-group col-sm-12">
+                                    @Html.ValidationSummary(false, "", new { @class = "text-danger "})
+                                    @if (ViewBag.Success != null)
+                                    {
+                                        <div class="alert alert-success alert-dismissible fade in pt-100 text-center" >
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>  @ViewBag.Success</strong>
+                                        </div>
+
+                                    }
+
+                                </div>
+                             
+                                <div class="form-group col-sm-12">
+                                    <label for="name" class="col-sm-3 control-label">Họ và Tên</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user fa-lg" aria-hidden="true"></i></span>
+
+                                            @Html.TextBoxFor(model => model.NameUser, new { placeholder = "Enter your Name", @class = "form-control" })
+
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.NameUser, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="name" class="col-sm-3 control-label">Giới tính</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fas fa-venus-mars"></i></span>
+                                            @Html.DropDownList("Gender", new List<SelectListItem>
+                                       {
+                                         new SelectListItem{ Text="Nam", Value="Nam"},
+                                         new SelectListItem{ Text="Nữ", Value="Nữ"}
+                                       }, "--- Select ---" ,new { @class = "form-control h-100  col-sm-3" })
+
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger " })
+                                    </div>
+                                </div>
+                              
+                                <div class="form-group col-sm-12">
+                                    <label for="email" class="col-sm-3 control-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                            @Html.TextBoxFor(model => model.email, new { placeholder = "Enter your Email", @class = "form-control" })
+
+
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessage("ExistEmail", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-sm-12">
+                                    <label for="adderss" class="col-sm-3 control-label">Địa chỉ</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-map-marker fa-lg"></i></span>
+                                            @Html.TextAreaFor(model => model.Addresss, new { placeholder = "Enter your Address", @class = "form-control" })
+
+
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Addresss, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="phone" class="col-sm-3 control-label">Số điện thoại</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i></span>
+                                            @Html.TextBoxFor(model => model.Tel, new { placeholder = "Enter your Phone Number", @class = "form-control" })
+
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="username" class="col-sm-3 control-label">Username</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                            @Html.TextBoxFor(model => model.Usernames, new { placeholder = "Enter your User name", @class = "form-control" })
+
+
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Usernames, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessage("ExistUser", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="password" class="col-sm-3 control-label">Password</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-unlock fa-lg" aria-hidden="true"></i></span>
+                                            @Html.PasswordFor(model => model.Passwords, new { placeholder = "Enter your Password", @class = "form-control" })
+
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Passwords, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="confirm" class="col-sm-3 control-label">Confirm Password</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                            @Html.PasswordFor(model => model.ConfirmPassword, new { placeholder = "Confirm your Password", @class = "form-control" })
+
+
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="confirm" class="col-sm-3 control-label">Captcha</label>
+                                    <div class="col-sm-9">
+                                        <div class=" mb-5">
+                                            @Html.Captcha(registerCaptcha)
+                                          
+                                        </div>
+                                     
+                                
+                                        <div class="pt-4">
+                                            @Html.TextBox("CaptchaCode","",new {@class="form-control w-50" })
+                                        </div>
+
+                                    </div>
+                                 
+                                </div>
+                                <hr />
+                              
+                                 <div class="form-group col-sm-12">
+                                <div class="form-group ">
+                                    <button type="submit" class="btn btn-primary  btn-block login-button">Sign Up</button>
+                                </div>
+                                 </div>
+                            </form>
+                        </article>
+                    </div>
+                </aside>
+                <div class="col-md-offset-2"></div>
+            </div>
+        }
+        <!-- card.// -->
+    </div>
+}

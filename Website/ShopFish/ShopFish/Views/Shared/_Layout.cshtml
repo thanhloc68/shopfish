@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css">
+    <script src="~/Content/js/styles.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/fontawesome/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Content/css/jquery.wm-zoom-1.0.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/toastr.css">
+    <script src="~/Content/js/toastr.js"></script>
+</head>
+
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <i class="fas fa-arrow-alt-circle-up"></i>
+    </button>
+    <!-- menu -->
+
+    @Html.Partial("_PartialView/_NavHeader")
+
+    <!-- end slide -->
+    <div class="container" id="cartfr">
+
+        <nav class="navbar navbar-expand-sm navbar-light ">
+            @Html.Partial("_PartialView/_Search")
+
+            <div class="right col-xs-12 col-sm-12 col-md-8 animate-dropdown top-cart-row">
+
+                @Html.Partial("_PartialView/_ModalCart")
+
+            </div>
+        </nav>
+    </div>
+    <hr>
+    <!-- list product -->
+    <div class="container-fluid">
+
+        @*@Html.Partial("_PartialView/_PopUpCart")*@
+
+        @RenderBody()
+    </div>
+
+    <!-- end list product -->
+    @Html.Partial("_PartialView/_Footer")
+    <!-- Load jquery trước khi load bootstrap js -->
+
+
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+  
+   
+</body>
+
+</html>

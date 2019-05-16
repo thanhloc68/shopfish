@@ -1,0 +1,171 @@
+﻿@model IEnumerable<ShopFish.Models.Blog>
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var home = (IList<ShopFish.Models.Blog>)ViewBag.home;
+    var cacanh = (IList<ShopFish.Models.Blog>)ViewBag.cacanh;
+    var hoca = (IList<ShopFish.Models.Blog>)ViewBag.hoca;
+    var thucan = (IList<ShopFish.Models.Blog>)ViewBag.thucan;
+}
+
+<div class="container">
+    @Html.Partial("_PartialView/_PopUpCart")
+    <h5>
+        <section class="clearfix">
+
+            <section class="breadcrumbs clearfix">
+                @Html.ActionLink("Trang chủ", "Index", "Home", null, null)
+
+                &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                @Html.ActionLink("Tin tức", "News", "Contact", null, null)
+            </section>
+
+        </section>
+    </h5>
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-12">
+                <div class="col-md-3">
+
+
+                    <ul class="nav nav-tabs nav-pills nav-stacked panel panel-default">
+
+                        <li class="active text-center mt-2" style="width: 100% !important;border-bottom: 1px dashed lightsteelblue">
+                            <a data-toggle="tab" href="#home">Home</a>
+                        </li>
+                        <li class="text-center mt-3" style="width: 100% !important;border-bottom: 1px dashed lightsteelblue">
+                            <a data-toggle="tab" href="#menu1">Chăm sóc cá cảnh</a>
+                        </li>
+                        <li class="text-center mt-3" style="width: 100% !important;border-bottom: 1px dashed lightsteelblue">
+                            <a data-toggle="tab" href="#menu2">Trang trí hồ cá</a>
+                        </li>
+                        <li class="text-center mt-3" style="width: 100% !important;border-bottom: 1px dashed lightsteelblue">
+                            <a data-toggle="tab" href="#menu3">Thức ăn tốt cho cá</a>
+                        </li>
+                    </ul>
+                    <hr>
+                   
+                </div>
+                <div class="col-md-9 tab-content">
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            @foreach (var a in home)
+                            {
+                                <div class="panel panel-default ">
+                                    <article>
+                                        <div>
+                                            <h3>
+                                                &nbsp; @a.Title
+                                                @Html.ActionLink("Đọc thêm", "DetailBlogs", "Contact", new { id = a.ID }, new { @class = "btn btn-blog pull-right" })
+
+                                               
+                                            </h3>
+                                        </div>
+                                        <a href="#">
+                                            <img src="~/Content/img/@a.image1" alt="@a.Title" class="pull-left imgnew p-2 img-responsive">
+                                        </a>
+                                        <em>
+                                            Tags
+                                            <a href="~/Products/BCTT" target="_blank">Hồ cá</a>
+                                        </em>
+
+                                        <p>
+                                        @a.HeadBlog
+                                        </p>
+                                    </article>
+                                </div>
+                            }
+                           
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            @foreach (var a in cacanh)
+                            {
+                                <div class="panel panel-default ">
+                                    <article>
+                                        <div>
+                                            <h3>
+                                                &nbsp; @a.Title
+                                                @Html.ActionLink("Đọc thêm", "DetailBlogs", "Contact", new { id = a.ID }, new { @class = "btn btn-blog pull-right" })
+
+
+                                            </h3>
+                                        </div>
+                                        <a href="#">
+                                            <img src="~/Content/img/@a.image1" alt="@a.Title" class="pull-left imgnew p-2 img-responsive">
+                                        </a>
+                                        <em>
+                                            Tags
+                                            <a href="~/Products/BCTT" target="_blank">Hồ cá</a>
+                                        </em>
+
+                                        <p>
+                                            @a.HeadBlog
+                                        </p>
+                                    </article>
+                                </div>
+                            }
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            @foreach (var a in hoca)
+                            {
+                                <div class="panel panel-default ">
+                                    <article>
+                                        <div>
+                                            <h3>
+                                                &nbsp; @a.Title
+                                                @Html.ActionLink("Đọc thêm", "DetailBlogs", "Contact", new { id = a.ID }, new { @class = "btn btn-blog pull-right" })
+
+
+                                            </h3>
+                                        </div>
+                                        <a href="#">
+                                            <img src="~/Content/img/@a.image1" alt="@a.Title" class="pull-left imgnew p-2 img-responsive">
+                                        </a>
+                                        <em>
+                                            Tags
+                                            <a href="~/Products/BCTT" target="_blank">Hồ cá</a>
+                                        </em>
+
+                                        <p>
+                                            @a.HeadBlog
+                                        </p>
+                                    </article>
+                                </div>
+                            }
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            @foreach (var a in thucan)
+                            {
+                                <div class="panel panel-default ">
+                                    <article>
+                                        <div>
+                                            <h3>
+                                                &nbsp; @a.Title
+                                                @Html.ActionLink("Đọc thêm", "DetailBlogs", "Contact", new { id = a.ID }, new { @class = "btn btn-blog pull-right" })
+
+
+                                            </h3>
+                                        </div>
+                                        <a href="#">
+                                            <img src="~/Content/img/@a.image1" alt="@a.Title" class="pull-left imgnew p-2 img-responsive">
+                                        </a>
+                                        <em>
+                                            Tags
+                                            <a href="~/Products/BCTT" target="_blank">Hồ cá</a>
+                                        </em>
+
+                                        <p>
+                                            @a.HeadBlog
+                                        </p>
+                                    </article>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/jquery-2.2.3.min.js"></script>

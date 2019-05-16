@@ -1,0 +1,72 @@
+﻿@model ShopFish.ViewModels.AccountViewModels
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid bg-light">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <aside class="col-md-6">
+            <h4 style="text-transform: uppercase">Xin chào bạn đã đến với shop! Vui lòng đăng nhập tại đây : </h4>
+            <form role="form" method="post" action="~/Login/Login">
+                @Html.AntiForgeryToken()
+   
+                @Html.ValidationSummary(true)
+                <div class="card">
+                    <article class="card-body">
+
+                        <h4 class="card-title text-center mb-4 mt-1">Sign in</h4><hr>
+                        <form>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" placeholder="Username" name="Username" aria-describedby="basic-addon1" required>
+                                </div>
+                            </div>
+                            <!-- form-group// -->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i> </span>
+                                    <input type="password" class="form-control" placeholder="********" name="Password" aria-describedby="basic-addon1" required>
+
+                                </div>
+                            </div>
+                            <p class="text-center alert-danger">@ViewBag.error</p>
+                            <!-- form-group// -->
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <div class="form-group">
+                                        <button type="submit" value="login" class="btn btn-primary btn-block"> Login</button>
+                                    </div>
+                                    <!-- form-group// -->
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    @Html.ActionLink("Quên mật khẩu","Forgot","Login")
+                                
+                                </div>
+                            </div>
+                            <!-- .row// -->
+                        </form>
+
+                        <div class="login-or">
+                            <hr class="hr-or">
+                            <span class="span-or">Hoặc</span>
+                        </div>
+                        <p>
+
+                            <a href="/Login/LoginFacebook" class="btn btn-block btn-outline-primary border">
+                                <i class="fab fa-facebook-f"></i>   Login with facebook
+                            </a>
+                        </p>
+
+
+                    </article>
+                </div>
+            </form>
+        </aside>
+        <div class="col-md-3"></div>
+    </div>
+    <!-- card.// -->
+</div>

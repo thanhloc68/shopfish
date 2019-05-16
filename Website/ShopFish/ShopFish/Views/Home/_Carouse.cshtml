@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ShopFish.Models.Products>
+
+
+
+
+<div class="row mt-5">
+
+    <div class="container border-1">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 col-xl-12">
+            <h2 class="list-product-title">Sản phẩm mới</h2>
+            <div class="list-product-subtitle">
+                <p>List product description</p>
+            </div>
+
+            <!-- Controls -->
+            <div class="pull-right">
+                <a class="left" href="~/Products/CCV">
+                    <p>Xem thêm</p>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="product-group">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card card-product mb-3">
+                        <img class="card-img-top imgfeet" src="~/Content/img/@item.Image" alt="@item.Name">
+                        <div class="card-body">
+                            <h5 class="card-title product-title nameproduct">@item.Name</h5>
+                            <div class="card-text product-price">
+                                <span class="new-price">@string.Format("{0:0,0 VNĐ}", item.Price).Replace(",", ".")</span>
+                            </div>
+                            <div style="text-align: center">
+                                <a class="btn btn-info add-to-cart" data-id="@item.ID"  data-name="@item.Name">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                                @Html.ActionLink("Xem chi tiết", "Detail", "Products", new { id = item.ID }, new { @class = "btn btn-outline-info btn-detail" })
+                            </div>
+                            <h3 class="hot-sticky">New</h3>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div><hr>

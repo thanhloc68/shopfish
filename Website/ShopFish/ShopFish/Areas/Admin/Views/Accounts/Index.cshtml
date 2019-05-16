@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ShopFish.Models.Accounts>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản trị tài khoản</h2>
+
+
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>
+          <p>Phân quyền</p>
+        </th>
+        <th>
+            <p>Tên tài khoản</p>
+        </th>
+        
+        <th>
+            <p>Tên người dùng</p>
+        </th>
+        <th>
+            <p>Giới tính</p>
+        </th>
+        <th>
+            <p>Số điện thoại</p>
+        </th>
+        <th>
+            <p>Địa chỉ</p>
+        </th>
+        <th>
+            <p>Email</p>
+        </th>
+       
+    
+        <th>
+            <p>
+               @Html.ActionLink("Create New", "Create")
+            </p>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Roles.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usernames)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.NameUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Addresss)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+         
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,100 @@
+﻿@model ShopFish.Models.Orders
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid bg-light">
+    <div class="form-group">
+        
+            <h4 class="text-success text-center">Sản phẩm của bạn sẽ được giao trong vài ngày...</h4>
+   
+    </div>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Thông tin sản phẩm đã đặt</h4>
+            <hr />
+
+            @Html.HiddenFor(model => model.ID)
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên khách hàng</label>
+                <div class="col-md-10">
+                    @Model.CustomerId
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Ngày đặt hàng</label>
+                <div class="col-md-10">
+                    @Html.FormatValue(Model.OrderDate, "{0:dd-MM-yyyy}")
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên người nhận</label>
+                <div class="col-md-10">
+                    @Model.Receiver
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Email</label>
+                <div class="col-md-10">
+                    @Model.Address
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tổng tiền</label>
+                <div class="col-md-10">
+                    @string.Format("{0:0,0 VNĐ}", Model.Amount).Replace(",", ".")
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mô tả</label>
+                <div class="col-md-10">
+                    @Model.Descriptions
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        <h4>Chi Tiết Đặt Hàng</h4>
+        <table class="table table-hover table-striped table-bordered">
+            <tr>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Đơn giá</th>
+
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+            @foreach (var d in Model.Ordersdetails)
+            {
+                <tr>
+                    <td>@d.ProductId</td>
+                    <td>@d.Product</td>
+                    <td> @string.Format("{0:0,0 VNĐ}", d.UnitPrice).Replace(",", ".")</td>
+                    <td>@d.Quantity</td>
+                    <td class="new-price"> @string.Format("{0:0,0 VNĐ}", d.UnitPrice * d.Quantity).Replace(",", ".")</td>
+                </tr>
+            }
+        </table>
+    }
+</div>

@@ -1,0 +1,128 @@
+﻿@model IEnumerable<ShopFish.Models.Products>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row mt-1">
+        <table class="table table-hover table-condensed table-responsive">
+            <thead>
+                <tr>
+                    <th style="width:50%">Sản phẩm</th>
+                    <th style="width:10%">Giá</th>
+                    <th style="width:8%">Số lượng</th>
+                    <th style="width:22%" class="text-center">Tổng tiền</th>
+                    <th style="width:10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() != 0)
+                {
+                    foreach (var a in Model)
+                    {
+                        <tr>
+                            <td data-th="Product">
+                                <div class="row">
+                                    <div class="col-md-3 hidden-xs"><img src="~/Content/img/@a.Image" alt="@a.Name" class="img-responsive w-100 h-100" /></div>
+                                    <div class="col-md-9">
+                                        <h4 class="nomargin">@a.Name</h4>
+                                        <p>@a.Descriptions</p>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td data-th="Price">
+                                <span class="new-price">
+                                    @string.Format("{0:0,0 VNĐ}", a.Price).Replace(",", ".")
+                                </span>
+                            </td>
+                            <td data-th="Quantity" id="quantity">
+                                <input type="number" class="form-control text-center quantity" value="@a.Quanlity" min="0" max="10">
+                               
+                            </td>
+
+                            <td data-th="Subtotal" class="text-center">
+                                <span class="new-price">@string.Format("{0:0,0 VNĐ}", a.Price * a.Quanlity).Replace(",", ".")</span>
+                               
+                            </td>
+                            <td class="actions" data-th="">
+
+                                <button class="btn btn-danger btn-sm remove-from-cart" data-id="@a.ID"><i class="fa fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                        <tr>
+                            <td colspan="5">
+                                <div class="alert alert-danger text-center" role="alert" >Your cart is empty</div>
+                            </td>  </tr>
+                }
+
+
+            </tbody>
+            <tfoot>
+                <tr class="visible-xs">
+                    <td class="text-center"><strong>@string.Format("{0:0,0 VNĐ}", @ShopFish.ViewModels.ShoppingCart.Cart.Total).Replace(",", ".")</strong></td>
+                </tr>
+                <tr>
+                    <td><a href="@Url.Action("CCV","Products")" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td colspan="2" class="hidden-xs"></td>
+                    <td class="hidden-xs text-center"><strong>@string.Format("{0:0,0 VNĐ}", @ShopFish.ViewModels.ShoppingCart.Cart.Total).Replace(",", ".")</strong></td>
+                    @if (Model.Count() != 0)
+                    {
+                        <td><a href="/Order/Checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    }
+                    else
+                    {
+                        <td><a href="/Home/Index" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    }
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<script src="~/Content/js/jquery-2.2.3.min.js"></script>
+ 
+    <script>
+        $(function () {
+            // Xóa khỏi giỏ
+            $(".remove-from-cart").click(function () {
+                pid = $(this).attr("data-id");
+               
+                tr = $(this).parents("tr");// tim <tr> chua <img> bi click
+                $.ajax({
+                    url: "/Cart/Remove",
+                    data: { id: pid },
+                    success: function (response) {
+                        $("#nn-cart-count").html(response.Count);
+                        $("#nn-cart-total").html(response.Total);
+                        location.reload();
+                        tr.hide(500); n
+                    }
+                });
+            });
+            // Cập nhật số lượng
+            $(".quantity").keyup(function () {
+                pid = $(this).attr("data-id");
+                qty = $(this).val();
+                $.ajax({
+                    url: "/Cart/Update",
+                    data: { id: pid, quantity: qty },
+                    success: function (response) {
+                        $("#nn-cart-count").html(response.Count);
+                        $("#nn-cart-total").html(response.Total);
+                        $("#" + pid).html("$" + response.Amount);
+                        location.reload();
+                    }
+                });
+            });
+
+        });
+
+    </script>
+ 

@@ -1,0 +1,23 @@
+﻿
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var student = Session["Username"] as ShopFish.Models.Accounts;
+}
+<div class="container-fluid bg-light">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <aside class="col-md-6">
+            <h2 class="new-price">Thông tin tài khoản</h2>
+            <ul>
+                <li>Username: @student.Usernames</li><br />
+                <li>Tên người dùng : @student.NameUser</li><br />
+                <li>Email: @student.email</li><br />
+                <li>Giới tính : @student.Gender</li><br />
+                <li>Địa chỉ : @student.Addresss</li><br />
+                <li>Số điện thoại : @student.Tel</li><br />
+            </ul>
+            </aside>
+</div></div>

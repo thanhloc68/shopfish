@@ -1,0 +1,171 @@
+﻿@model ShopFish.ViewModels.ContactViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+  
+    <h4>
+        <section class="clearfix">
+
+            <section class="breadcrumbs clearfix">
+                @Html.ActionLink("Trang chủ", "Index", "Home", null, null)
+
+                &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                @Html.ActionLink("Liên hệ", "Index", "Contact", null, null)
+            </section>
+
+        </section>
+    </h4>
+    <div style="text-align:center">
+        <h2>
+            <span class="red">
+                <i class="fa fa-sm fa-info-circle" aria-hidden="false">
+                </i>
+            </span>
+            Contact Us
+        </h2>
+        <p>Quý khách vui lòng gửi thông tin cho chúng tôi theo form sau:</p>
+    </div>
+    <div class="row">
+
+        <div class="col-md-8">
+            @using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="col-md-12 pb-4">
+
+                    @if (ViewBag.Success != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade in pt-100 text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>  @ViewBag.Success</strong>
+                        </div>
+
+                    }
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label for="txtten">Tên bạn:</label>
+                            <span class="red">*</span>
+                        </div>
+
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Nhập Họ tên" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 pb-4">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label for="txtten">SĐT:</label>
+                            <span class="red">*</span>
+                        </div>
+
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 pb-4">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label for="txtten">Email:</label>
+                            <span class="red">*</span>
+                        </div>
+
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Nhập email" })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 pb-4">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label for="txtten">Địa chỉ:</label>
+                            <span class="red">*</span>
+                        </div>
+
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.address, new { @class = "form-control", placeholder = "Nhập địa chỉ" })
+                            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-12 pb-4">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label for="comment">Comment:</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.TextAreaFor(model => model.Content, new { @cols = 6, @rows = 6, @class = "form-control", placeholder = "Nhập nội dung" })
+                            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 pb-4">
+                    <div class="form-group">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            }
+        </div>
+        <div class="col-md-4">
+            <!-- Links -->
+            <h5 class="text-uppercase font-weight-bold">
+                <i class="fas mr-3">&#xf0e0;</i> Website Bán cá
+            </h5>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto pd-3" style="width: 60px;">
+            <p>
+                <i class="fas fa-home mr-3"></i> An Phú - Thuận An - Bình Dương
+            </p>
+            <p>
+                <i class="fas fa-envelope mr-3"></i> maquydoi0@gmail.com
+            </p>
+            <p>
+                <i class="fas fa-phone mr-3"></i> + 01 234 567 88
+            </p>
+            <p>
+                <i class="fas fa-print mr-3"></i> + 01 234 567 89
+            </p>
+            <p>
+                <i class="fab fa-facebook mr-3"></i> <a href="https://www.fb.com/abc" style="color: black">Nguyễn Thành Lộc</a>
+            </p>
+            <p>
+                <i class="fab fa-skype mr-3"></i> <a href="https://join.skype.com/F0aluObSiTty" style="color: black">Nguyễn Thành Lộc</a>
+            </p>
+
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-12">
+                <div class="card-body">
+                    <h4 class="card-title text-center">
+                        <i class='fas fa-globe' style='color:blue'></i>  TÌM TRÊN BẢN ĐỒ
+                    </h4>
+                </div>
+
+                <iframe width="100%" height="500px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1384.9593751480768!2d106.74334355014294!3d10.943974450648856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d972a865fe9d%3A0x1ba36175feadc2f0!2zVsOybmcgWG9heSBBbiBQaMO6!5e0!3m2!1svi!2s!4v1554449908242!5m2!1svi!2s"></iframe>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/jquery-2.2.3.min.js"></script>

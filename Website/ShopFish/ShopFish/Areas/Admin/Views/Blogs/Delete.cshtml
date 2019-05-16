@@ -1,0 +1,81 @@
+﻿@model ShopFish.Models.Blog
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Blog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeadBlog)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeadBlog)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BodyBlog)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BodyBlog)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FootBlog)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FootBlog)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ShopFish.Models.Products>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+
+    <div class="row mt-5">
+
+        <div class="container border-1">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 col-xl-12">
+                <h2 class="list-product-title">Sản phẩm nổi bật</h2>
+                <div class="list-product-subtitle">
+                    <p>List product description</p>
+                </div>
+
+                <!-- Controls -->
+                <div class="pull-right">
+                    <a class="left" href="~/Products/CCV">
+                        <p>Xem thêm</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="product-group">
+            <div class="row">
+                @foreach (var a in Model)
+                {
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <div class="card card-product mb-3">
+                            <img class="card-img-top imgfeet nn-cart-image" src="~/Content/img/@a.Image" alt="@a.Name">
+                            <div class="card-body">
+                                <h5 class="card-title product-title nameproduct">@a.Name</h5>
+                                <div class="card-text product-price">
+                                    <span class="new-price">@string.Format("{0:0,0 VNĐ}", a.Price).Replace(",", ".")</span>
+                                </div>
+                                <div style="text-align: center">
+                                    @if (a.Quanlity < 1)
+                                    {
+                                        <a class="btn btn-info add-to-cart toast toast-error">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </a>
+                                        @Html.ActionLink("Xem chi tiết", "Detail", "Products", new { id = a.ID }, new { @class = "btn btn-outline-info btn-detail nn-view-detail" })
+
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-info add-to-cart" data-id="@a.ID" data-name="@a.Name" data-quantity="@a.Quanlity">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </a>
+                                        @Html.ActionLink("Xem chi tiết", "Detail", "Products", new { id = a.ID }, new { @class = "btn btn-outline-info btn-detail nn-view-detail" })
+
+                                    }
+                                </div>
+                                <h3 class="hot-sticky">@a.Hot</h3>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div><hr>
+
+    @{Html.RenderAction("Carouse", "Home");
+    }
+</div>
+<script src="~/Content/js/jquery-2.2.3.min.js"></script>
+<script>
+    $(function () {
+        $(".add-to-cart").click(function () {
+            pid = $(this).attr("data-id");
+            name = $(this).attr("data-name");
+            $.ajax({
+                url: "/Cart/Add",
+                data: { id: pid, name },
+                success: function (response) {
+                    $("#nn-cart-count").html(response.Count);
+                    $("#nn-cart-total").html(response.Total);
+                    toastr.success('Đã thêm ' + name + ' vào giỏ hàng', 'Thông báo');
+                   
+                }
+               
+            });
+
+            // hieu ung bay vao gio
+
+        });
+ 
+          
+
+    });
+</script>

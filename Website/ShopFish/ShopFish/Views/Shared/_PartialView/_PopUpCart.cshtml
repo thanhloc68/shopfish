@@ -1,0 +1,130 @@
+﻿@model IEnumerable<ShopFish.Models.Products>
+<div class="modal modal-lg fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h4 class="modal-title">Giỏ hàng của bạn</h4>
+
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @try
+                {
+                    if (Model.Any())
+                    {
+                        foreach (var a in Model)
+                        {
+                        <div class="row">
+                            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3 col-xl-3">
+                                <div>
+                                    <a href="indexbd17.html?page=detail">
+                                        <img width="100%" height="100%" src="~/Content/img/@a.Image" alt="@a.Name">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 col-md-4 col-lg-4 col-sm-4 col-xl-4">
+
+                                <div>
+                                    <p>@a.Name</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-md-3 col-lg-3 col-sm-3 col-xl-3" style="padding-right: 0px!important;">
+                                <div>
+                                    @a.Quanlity
+                                </div>
+                                <hr>
+
+                                <div class="new-price">@a.Price</div>
+                            </div>
+                            <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2 col-xl-2">
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-danger remove-from-cart">
+                                        <i class="fa fa-trash-alt"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <hr>
+                        }
+                    }
+                    else
+                    {
+                    <tr>
+                        <td colspan="5">
+
+
+                            <div class="alert alert-danger text-center" role="alert">
+                                Your cart is empty
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                }
+                catch
+                {
+
+                }
+
+                <hr>
+                <div class="clearfix">
+                    <div class="row">
+                        <div class="col-6">
+                            <span class="">Tên tài khoản : </span>
+                            <span class=''>maquydoi12345</span>
+                        </div>
+                        <div class="col-6">
+                            <div class="pull-right">
+                                <span class="">Sub Total :</span>
+                                <span class=''>100.000.000 VNĐ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="/Cart/Index" class="btn btn-upper btn-primary btn-block m-t-20">CheckOut</a>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<script>
+        $(function () {
+            // Xóa khỏi giỏ
+            $(".remove-from-cart").click(function () {
+                pid = $(this).attr("data-id");
+
+                tr = $(this).parents("tr");// tim <tr> chua <img> bi click
+                $.ajax({
+                    url: "/Cart/Remove",
+                    data: { id: pid },
+                    success: function (response) {
+                        $("#nn-cart-count").html(response.Count);
+                        $("#nn-cart-total").html(response.Total);
+                        tr.hide(500); n
+                    }
+                });
+            });
+            // Cập nhật số lượng
+            $(".quantity").keyup(function () {
+                pid = $(this).attr("data-id");
+                qty = $(this).val();
+                $.ajax({
+                    url: "/Cart/Update",
+                    data: { id: pid, quantity: qty },
+                    success: function (response) {
+                        $("#nn-cart-count").html(response.Count);
+                        $("#nn-cart-total").html(response.Total);
+                        $("#" + pid).html("$" + response.Amount);
+                    }
+                });
+            });
+        });
+
+</script>

@@ -1,0 +1,82 @@
+﻿
+@model ShopFish.ViewModels.BlogModelVIew
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="container p-mt-15 p-mb-15">
+
+        <p class="post-bread"></p>
+
+        <div class="clearfix"></div>
+
+        <div class="row p-mt-20">
+
+            <div class="col-xs-12 col-sm-12 col-md-9 wow fadeInDown animated" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-name: fadeInDown;">
+
+
+                <div id="post-4739" class="box-baiviet post-4739 post type-post status-publish format-standard has-post-thumbnail ">
+
+                    <h1> @Html.Raw(Model.Title)</h1>
+
+                    @Html.Raw(Model.HeadBlog)
+
+                    <div id="attachment_4741" style="width: 650px" class="wp-caption aligncenter">
+                        <img class="size-full wp-image-4741" src="/Content/img/@Model.image1" alt="Cách diệt rêu tảo hại trong hồ cá" width="640" height="480"><p class="wp-caption-text">@Model.Title</p>
+                    </div>
+                    @Html.Raw(Model.BodyBlog)
+
+                    <br />
+                    @Html.Raw(Model.FootBlog)
+
+                </div>
+
+
+
+                <div class="clearfix"></div>
+
+
+
+            </div>
+
+            <!-- end .col-sm-9 -->
+
+            <div class="col-xs-12 col-sm-12 col-md-3 p991-mt-20 wow fadeInDown animated" data-wow-duration="2s" data-wow-delay=".5s" id="_no-clickjacking-0" style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeInDown; opacity: 1; overflow: visible;">
+
+                <div id="recent-posts-2" class="widget widget_recent_entries p-p-0 box-widget1">
+                    <div class="p-p-0"><h4 class="title_widget_page">Bài viết mới nhất</h4></div>		<ul>
+                        <li>
+                            <a href="https://hocanghethuat.com/nhung-benh-thuong-gap-o-ca-koi.html">Những bệnh thường gặp ở cá Koi ?</a>
+                        </li>
+                        <li>
+                            <a href="https://hocanghethuat.com/thiet-ke-san-vuon-nha-pho.html">Thiết kế sân vườn nhà phố</a>
+                        </li>
+                        <li>
+                            <a href="https://hocanghethuat.com/cai-tao-ho-ca-koi-ngoai-troi.html">Cải tạo hồ cá koi ngoài trời</a>
+                        </li>
+                        <li>
+                            <a href="https://hocanghethuat.com/cach-lam-ho-thuy-sinh-mini-don-gian-danh-cho-nguoi-moi.html">Cách làm hồ thủy sinh mini đơn giản dành cho người mới</a>
+                        </li>
+                        <li>
+                            <a href="https://hocanghethuat.com/cach-lam-trong-nuoc-ho-ca-koi-hieu-qua.html">Cách Làm Trong Nước Hồ Cá Koi Hiệu Quả</a>
+                        </li>
+                        <li>
+                            <a href="https://hocanghethuat.com/xay-dung-ho-ca-koi-tai-nha.html">Chúng ta có thể tự xây dựng hồ cá Koi tại nhà không ?</a>
+                        </li>
+                        <li>
+                            <a href="https://hocanghethuat.com/ho-ca-koi-dat-chuan.html">Như thế nào là hồ cá koi đạt chuẩn ?</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+}

@@ -1,0 +1,292 @@
+﻿
+@model ShopFish.ViewModels.MenuListSp
+<div class="container">
+
+    <h4>
+        <section class="clearfix">
+
+            <section class="breadcrumbs clearfix">
+                @Html.ActionLink("Trang chủ", "Index", "Home", null, null)
+
+                &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                @Html.ActionLink("Sản phẩm", "CCV", "Products", null, null)
+            </section>
+
+        </section>
+    </h4>
+    <div class="row">
+        <div class="col-md-3">
+            <h4>
+                <section class="heading">
+                    <span>Danh mục sản phẩm</span>
+                </section>
+            </h4>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                <span class="glyphicon glyphicon-folder-close">
+                                </span>Cá cảnh
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "CCV")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=1">
+                                                <p>Cá cầu vồng</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=1">
+                                                <p>Cá cầu vồng</p>
+                                            </a>
+                                        }
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "CVLT")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=2">
+                                                <p>Cá Vàng Lan Thọ</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=2">
+                                                <p>Cá Vàng Lan Thọ</p>
+                                            </a>
+                                        }
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "CD")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=3">
+                                                <p>Cá Đĩa</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=3">
+                                                <p>Cá Đĩa</p>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "CLH")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=4">
+                                                <p>Cá La Hán</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=4">
+                                                <p>Cá La Hán</p>
+                                            </a>
+                                        }
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "CR")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=5">
+                                                <p>Cá Rồng</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=5">
+                                                <p>Cá Rồng</p>
+                                            </a>
+                                        }
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "CK")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=6">
+                                                <p>Các loại cá khác</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=6">
+                                                <p>Các loại cá khác</p>
+                                            </a>
+                                        }
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                <span class="glyphicon glyphicon-th">
+                                </span>Thức ăn cho cá
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "TACC")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=7">
+                                                <p>Thức ăn cho cá</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=7">
+                                                <p>Thức ăn cho cá</p>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                <span class="glyphicon glyphicon-user">
+                                </span>Bể cá
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+           
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "BCTT")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=8" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                <p>Bể cá treo tường</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=8">
+                                                <p>Bể cá treo tường</p>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "BCPT")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=9">
+                                                <p>Bể cá phong thủy </p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=9">
+                                                <p>Bể cá phong thủy </p>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "BCCTG")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=10">
+                                                <p>Bể cá chân tủ gỗ</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=10">
+                                                <p>Bể cá chân tủ gỗ</p>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (Model.Link == "BCMN")
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=11">
+                                                <p>Bể cá mini</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="~/Products/CCV?LoaiSp_ID=11">
+                                                <p>Bể cá mini</p>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="col-md-9">
+            @Html.Partial("./Partial/_Product")
+
+        </div>
+
+    </div>
+</div>

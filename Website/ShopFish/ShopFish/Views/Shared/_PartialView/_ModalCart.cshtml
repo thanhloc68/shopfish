@@ -1,0 +1,25 @@
+﻿
+<div class="dropdown-cart navbar-right">
+    <a class="lnk-cart " href='@Url.Action("Index","Cart")' title="Hiện giỏ hàng">
+        <div class="items-cart-inner">
+            <div class="total-price-basket">
+                <span class="">cart -</span>
+                <span class="" >
+                    <span id="nn-cart-total">
+                        @string.Format("{0:0,0 VNĐ}", @ShopFish.ViewModels.ShoppingCart.Cart.Total).Replace(",", ".")
+                    </span>
+                
+                </span>
+            </div>
+            <div class="basket" id="">
+                <i class="glyphicon glyphicon-shopping-cart"></i>
+            </div>
+            <div class="basket-item-count" id="nn-cart-count">
+               
+                <span class="">@ShopFish.ViewModels.ShoppingCart.Cart.Count</span>
+            </div>
+
+        </div>
+
+    </a>
+</div>
